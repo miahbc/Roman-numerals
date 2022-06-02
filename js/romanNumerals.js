@@ -10,9 +10,11 @@ exports.toRoman = function(num) {
             M: 1000,
         }
         let num1 = 0 + num
+        let revObj = Object.keys(romanMap).reverse()
+        console.log(revObj)
         // console.log(num1)
         while (num1 > 0) {
-        for (const [key] of Object.keys(romanMap).reverse()) {
+        for (const [key] of revObj) {
             // console.log(key,value)
             let evenDiv = num1 / romanMap[key]
             if (evenDiv >= 1) {
@@ -20,7 +22,6 @@ exports.toRoman = function(num) {
                 num1 -= romanMap[key]
                 // console.log(num1)
             }}
-
         } 
         console.log(output)
         return output
