@@ -1,37 +1,53 @@
-exports.toRoman = function(num) {
+function toRoman(num) {
         let output = ''
         const romanMap = {
             I: 1,
+            IV: 4,
             V: 5,
+            IX: 9,
             X: 10,
+            XL: 40,
             L: 50,
+            XC: 90,
             C: 100,
+            CD: 400,
             D: 500,
+            CM: 900,
             M: 1000,
         }
         let num1 = 0 + num
-        let revObj = Object.keys(romanMap).reverse()
-        console.log(revObj)
+        let revObj = Object.entries(romanMap).reverse()
+        // console.log("***This is a reverse object!***")
+        // console.log(revObj)
         // console.log(num1)
-        while (num1 > 0) {
+        // while (num1 > 0) {
         for (const [key] of revObj) {
             // console.log(key,value)
             let evenDiv = num1 / romanMap[key]
+            // console.log(`num1 = ${num1}`)
+            // console.log(`value = ${romanMap[key]}`)
+            // console.log(`evendiv = ${evenDiv} (${num1} / ${romanMap[key]})`)
             if (evenDiv >= 1) {
-                output += key
-                num1 -= romanMap[key]
+                while (evenDiv >=1) {
+                    output += key
+                    num1 -= romanMap[key]
+                    evenDiv--
+                }
+                // num1 -= romanMap[key]
                 // console.log(num1)
-            }}
-        } 
-        console.log(output)
-        return output
+            }
+            else {continue}
+        }
+    // }
+        // console.log(output)
+        return output 
     }
 
-//  console.log(toRoman(20))
+ console.log(toRoman(20)) // 'XX'
 
-// to_roman(4) // 'IV'
-// to_roman(944) // 'CMXLIV'
-// to_roman(150) // CL
+console.log(toRoman(4)) // 'IV'
+console.log(toRoman(944)) // 'CMXLIV'
+console.log(toRoman(150)) // CL
 
 
 // I -> 1
